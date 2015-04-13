@@ -103,38 +103,80 @@ A GeoJSON feature collection:
   "type": "FeatureCollection",
   "features": [
     {
-      "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [102.0, 0.5]
-      },
-      "properties": {"prop0": "value0"}
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "LineString",
         "coordinates": [
-          [102.0, 0.0], [103.0, 1.0], [104.0, 0.0], [105.0, 1.0]
+          102,
+          0.5
         ]
       },
+      "type": "Feature",
       "properties": {
-        "prop0": "value0",
-        "prop1": 0.0
+        "prop0": "value0"
       }
     },
     {
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            102,
+            0
+          ],
+          [
+            103,
+            1
+          ],
+          [
+            104,
+            0
+          ],
+          [
+            105,
+            1
+          ]
+        ]
+      },
       "type": "Feature",
+      "properties": {
+        "prop0": "value0",
+        "prop1": 0
+      }
+    },
+    {
       "geometry": {
         "type": "Polygon",
         "coordinates": [
-          [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0],
-            [100.0, 1.0], [100.0, 0.0] ]
+          [
+            [
+              100,
+              0
+            ],
+            [
+              101,
+              0
+            ],
+            [
+              101,
+              1
+            ],
+            [
+              100,
+              1
+            ],
+            [
+              100,
+              0
+            ]
+          ]
         ]
       },
+      "type": "Feature",
       "properties": {
-         "prop0": "value0",
-         "prop1": {"this": "that"}
+        "prop0": "value0",
+        "prop1": {
+          "this": "that"
+        }
       }
     }
   ]
@@ -375,11 +417,33 @@ Example of a bbox member on a feature:
 {% highlight javascript %}
 {
   "type": "Feature",
-  "bbox": [-180.0, -90.0, 180.0, 90.0],
+  "bbox": [
+    -180,
+    -90,
+    180,
+    90
+  ],
   "geometry": {
     "type": "Polygon",
     "coordinates": [
-      [ [-180.0, 10.0], [20.0, 90.0], [180.0, -5.0], [-30.0, -90.0] ]
+      [
+        [
+          -180,
+          10
+        ],
+        [
+          20,
+          90
+        ],
+        [
+          180,
+          -5
+        ],
+        [
+          -30,
+          -90
+        ]
+      ]
     ]
   }
   ...
@@ -391,7 +455,12 @@ Example of a bbox member on a feature collection:
 {% highlight javascript %}
 {
   "type": "FeatureCollection",
-  "bbox": [100.0, 0.0, 105.0, 1.0],
+  "bbox": [
+    100,
+    0,
+    105,
+    1
+  ],
   "features": [
     ...
   ]
@@ -412,7 +481,10 @@ coordinates, longitude, latitude for geographic coordinates):
 {% highlight javascript %}
 {
   "type": "Point",
-  "coordinates": [100.0, 0.0]
+  "coordinates": [
+    100,
+    0
+  ]
 }
 {% endhighlight %}
 
@@ -423,7 +495,16 @@ Coordinates of LineString are an array of positions (see [2.1.1. Positions](#pos
 {% highlight javascript %}
 {
   "type": "LineString",
-  "coordinates": [ [100.0, 0.0], [101.0, 1.0] ]
+  "coordinates": [
+    [
+      100,
+      0
+    ],
+    [
+      101,
+      1
+    ]
+  ]
 }
 {% endhighlight %}
 
@@ -439,7 +520,28 @@ No holes:
 {
   "type": "Polygon",
   "coordinates": [
-      [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0] ]
+    [
+      [
+        100,
+        0
+      ],
+      [
+        101,
+        0
+      ],
+      [
+        101,
+        1
+      ],
+      [
+        100,
+        1
+      ],
+      [
+        100,
+        0
+      ]
+    ]
   ]
 }
 {% endhighlight %}
@@ -450,8 +552,50 @@ With holes:
 {
   "type": "Polygon",
   "coordinates": [
-    [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0] ],
-    [ [100.2, 0.2], [100.8, 0.2], [100.8, 0.8], [100.2, 0.8], [100.2, 0.2] ]
+    [
+      [
+        100,
+        0
+      ],
+      [
+        101,
+        0
+      ],
+      [
+        101,
+        1
+      ],
+      [
+        100,
+        1
+      ],
+      [
+        100,
+        0
+      ]
+    ],
+    [
+      [
+        100.2,
+        0.2
+      ],
+      [
+        100.8,
+        0.2
+      ],
+      [
+        100.8,
+        0.8
+      ],
+      [
+        100.2,
+        0.8
+      ],
+      [
+        100.2,
+        0.2
+      ]
+    ]
   ]
 }
 {% endhighlight %}
@@ -463,7 +607,16 @@ Coordinates of a MultiPoint are an array of positions:
 {% highlight javascript %}
 {
   "type": "MultiPoint",
-  "coordinates": [ [100.0, 0.0], [101.0, 1.0] ]
+  "coordinates": [
+    [
+      100,
+      0
+    ],
+    [
+      101,
+      1
+    ]
+  ]
 }
 {% endhighlight %}
 
@@ -475,8 +628,26 @@ Coordinates of a MultiLineString are an array of LineString coordinate arrays:
 {
   "type": "MultiLineString",
   "coordinates": [
-    [ [100.0, 0.0], [101.0, 1.0] ],
-    [ [102.0, 2.0], [103.0, 3.0] ]
+    [
+      [
+        100,
+        0
+      ],
+      [
+        101,
+        1
+      ]
+    ],
+    [
+      [
+        102,
+        2
+      ],
+      [
+        103,
+        3
+      ]
+    ]
   ]
 }
 {% endhighlight %}
@@ -489,9 +660,76 @@ Coordinates of a MultiPolygon are an array of Polygon coordinate arrays:
 {
   "type": "MultiPolygon",
   "coordinates": [
-    [[[102.0, 2.0], [103.0, 2.0], [103.0, 3.0], [102.0, 3.0], [102.0, 2.0]]],
-    [[[100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0]],
-    [[100.2, 0.2], [100.8, 0.2], [100.8, 0.8], [100.2, 0.8], [100.2, 0.2]]]
+    [
+      [
+        [
+          102,
+          2
+        ],
+        [
+          103,
+          2
+        ],
+        [
+          103,
+          3
+        ],
+        [
+          102,
+          3
+        ],
+        [
+          102,
+          2
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          100,
+          0
+        ],
+        [
+          101,
+          0
+        ],
+        [
+          101,
+          1
+        ],
+        [
+          100,
+          1
+        ],
+        [
+          100,
+          0
+        ]
+      ],
+      [
+        [
+          100.2,
+          0.2
+        ],
+        [
+          100.8,
+          0.2
+        ],
+        [
+          100.8,
+          0.8
+        ],
+        [
+          100.2,
+          0.8
+        ],
+        [
+          100.2,
+          0.2
+        ]
+      ]
+    ]
   ]
 }
 {% endhighlight %}
@@ -507,11 +745,23 @@ geometry objects described above:
   "geometries": [
     {
       "type": "Point",
-      "coordinates": [100.0, 0.0]
+      "coordinates": [
+        100,
+        0
+      ]
     },
     {
       "type": "LineString",
-      "coordinates": [ [101.0, 0.0], [102.0, 1.0] ]
+      "coordinates": [
+        [
+          101,
+          0
+        ],
+        [
+          102,
+          1
+        ]
+      ]
     }
   ]
 }
