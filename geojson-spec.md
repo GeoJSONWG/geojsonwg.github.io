@@ -99,39 +99,46 @@ described above.
 A GeoJSON feature collection:
 
 {% highlight javascript %}
-  { "type": "FeatureCollection",
-    "features": [
-      { "type": "Feature",
-        "geometry": {"type": "Point", "coordinates": [102.0, 0.5]},
-        "properties": {"prop0": "value0"}
-        },
-      { "type": "Feature",
-        "geometry": {
-          "type": "LineString",
-          "coordinates": [
-            [102.0, 0.0], [103.0, 1.0], [104.0, 0.0], [105.0, 1.0]
-            ]
-          },
-        "properties": {
-          "prop0": "value0",
-          "prop1": 0.0
-          }
-        },
-      { "type": "Feature",
-         "geometry": {
-           "type": "Polygon",
-           "coordinates": [
-             [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0],
-               [100.0, 1.0], [100.0, 0.0] ]
-             ]
-         },
-         "properties": {
-           "prop0": "value0",
-           "prop1": {"this": "that"}
-           }
-         }
-       ]
-     }
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [102.0, 0.5]
+      },
+      "properties": {"prop0": "value0"}
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [102.0, 0.0], [103.0, 1.0], [104.0, 0.0], [105.0, 1.0]
+        ]
+      },
+      "properties": {
+        "prop0": "value0",
+        "prop1": 0.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0],
+            [100.0, 1.0], [100.0, 0.0] ]
+        ]
+      },
+      "properties": {
+         "prop0": "value0",
+         "prop1": {"this": "that"}
+      }
+    }
+  ]
+}
 {% endhighlight %}
 
 
@@ -303,12 +310,12 @@ system.  OGC CRS URNs such as `"urn:ogc:def:crs:OGC:1.3:CRS84"` shall be
 preferred over legacy identifiers such as `"EPSG:4326"`:
 
 {% highlight javascript %}
-  "crs": {
-    "type": "name",
-    "properties": {
-      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
-      }
-    }
+"crs": {
+  "type": "name",
+  "properties": {
+    "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+  }
+}
 {% endhighlight %}
 
 ### <a id="linked-crs" href="#linked-crs">3.2. Linked CRS</a>
@@ -330,26 +337,26 @@ format used to represent CRS parameters at the provided URI. Suggested values
 are: `"proj4"`, `"ogcwkt"`, `"esriwkt"`, but others can be used:
 
 {% highlight javascript %}
-  "crs": {
-    "type": "link", 
-    "properties": {
-      "href": "http://example.com/crs/42",
-      "type": "proj4"
-      }
-    }
+"crs": {
+  "type": "link",
+  "properties": {
+    "href": "http://example.com/crs/42",
+    "type": "proj4"
+  }
+}
 {% endhighlight %}
     
 Relative links may be used to direct processors to CRS parameters in an
 auxiliary file:
 
 {% highlight javascript %}
-  "crs": {
-    "type": "link",
-    "properties": {
-      "href": "data.crs",
-      "type": "ogcwkt"
-      }
-    }
+"crs": {
+  "type": "link",
+  "properties": {
+    "href": "data.crs",
+    "type": "ogcwkt"
+  }
+}
 {% endhighlight %}
 
 ## <a id="bounding-boxes" href="#bounding-boxes">4. Bounding Boxes</a>
@@ -366,27 +373,29 @@ of which it is a member.
 Example of a bbox member on a feature:
 
 {% highlight javascript %}
-  { "type": "Feature",
-    "bbox": [-180.0, -90.0, 180.0, 90.0],
-    "geometry": {
-      "type": "Polygon",
-      "coordinates": [[
-        [-180.0, 10.0], [20.0, 90.0], [180.0, -5.0], [-30.0, -90.0]
-        ]]
-      }
-    ...
-    }
+{
+  "type": "Feature",
+  "bbox": [-180.0, -90.0, 180.0, 90.0],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [ [-180.0, 10.0], [20.0, 90.0], [180.0, -5.0], [-30.0, -90.0] ]
+    ]
+  }
+  ...
+}
 {% endhighlight %}
 
 Example of a bbox member on a feature collection:
 
 {% highlight javascript %}
-  { "type": "FeatureCollection",
-    "bbox": [100.0, 0.0, 105.0, 1.0],
-    "features": [
-      ...
-      ] 
-    }
+{
+  "type": "FeatureCollection",
+  "bbox": [100.0, 0.0, 105.0, 1.0],
+  "features": [
+    ...
+  ]
+}
 {% endhighlight %}
 
 ## <a id="appendix-a-geometry-examples" href="#appendix-a-geometry-examples">Appendix A. Geometry Examples</a>
@@ -401,7 +410,10 @@ Point coordinates are in x, y order (easting, northing for projected
 coordinates, longitude, latitude for geographic coordinates):
 
 {% highlight javascript %}
-  { "type": "Point", "coordinates": [100.0, 0.0] }
+{
+  "type": "Point",
+  "coordinates": [100.0, 0.0]
+}
 {% endhighlight %}
 
 ### <a id="id3" href="#id3">LineString</a>
@@ -409,9 +421,10 @@ coordinates, longitude, latitude for geographic coordinates):
 Coordinates of LineString are an array of positions (see [2.1.1. Positions](#positions)):
 
 {% highlight javascript %}
-  { "type": "LineString",
-    "coordinates": [ [100.0, 0.0], [101.0, 1.0] ]
-    }
+{
+  "type": "LineString",
+  "coordinates": [ [100.0, 0.0], [101.0, 1.0] ]
+}
 {% endhighlight %}
 
 ### <a id="id4" href="#id4">Polygon</a>
@@ -423,22 +436,24 @@ elements represent interior rings (or holes).
 No holes:
 
 {% highlight javascript %}
-  { "type": "Polygon",
-    "coordinates": [
+{
+  "type": "Polygon",
+  "coordinates": [
       [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0] ]
-      ]
-   }
+  ]
+}
 {% endhighlight %}
 
 With holes:
 
 {% highlight javascript %}
-  { "type": "Polygon",
-    "coordinates": [
-      [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0] ],
-      [ [100.2, 0.2], [100.8, 0.2], [100.8, 0.8], [100.2, 0.8], [100.2, 0.2] ]
-      ]
-   }
+{
+  "type": "Polygon",
+  "coordinates": [
+    [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0] ],
+    [ [100.2, 0.2], [100.8, 0.2], [100.8, 0.8], [100.2, 0.8], [100.2, 0.2] ]
+  ]
+}
 {% endhighlight %}
 
 ### <a id="id5" href="#id5">MultiPoint</a>
@@ -446,9 +461,10 @@ With holes:
 Coordinates of a MultiPoint are an array of positions:
 
 {% highlight javascript %}
-  { "type": "MultiPoint",
-    "coordinates": [ [100.0, 0.0], [101.0, 1.0] ]
-    }
+{
+  "type": "MultiPoint",
+  "coordinates": [ [100.0, 0.0], [101.0, 1.0] ]
+}
 {% endhighlight %}
 
 ### <a id="id6" href="#id6">MultiLineString</a>
@@ -456,12 +472,13 @@ Coordinates of a MultiPoint are an array of positions:
 Coordinates of a MultiLineString are an array of LineString coordinate arrays:
 
 {% highlight javascript %}
-  { "type": "MultiLineString",
-    "coordinates": [
-        [ [100.0, 0.0], [101.0, 1.0] ],
-        [ [102.0, 2.0], [103.0, 3.0] ]
-      ]
-    }
+{
+  "type": "MultiLineString",
+  "coordinates": [
+    [ [100.0, 0.0], [101.0, 1.0] ],
+    [ [102.0, 2.0], [103.0, 3.0] ]
+  ]
+}
 {% endhighlight %}
 
 ### <a id="id7" href="#id7">MultiPolygon</a>
@@ -469,13 +486,14 @@ Coordinates of a MultiLineString are an array of LineString coordinate arrays:
 Coordinates of a MultiPolygon are an array of Polygon coordinate arrays:
 
 {% highlight javascript %}
-  { "type": "MultiPolygon",
-    "coordinates": [
-      [[[102.0, 2.0], [103.0, 2.0], [103.0, 3.0], [102.0, 3.0], [102.0, 2.0]]],
-      [[[100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0]],
-       [[100.2, 0.2], [100.8, 0.2], [100.8, 0.8], [100.2, 0.8], [100.2, 0.2]]]
-      ]
-    }
+{
+  "type": "MultiPolygon",
+  "coordinates": [
+    [[[102.0, 2.0], [103.0, 2.0], [103.0, 3.0], [102.0, 3.0], [102.0, 2.0]]],
+    [[[100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0]],
+    [[100.2, 0.2], [100.8, 0.2], [100.8, 0.8], [100.2, 0.8], [100.2, 0.2]]]
+  ]
+}
 {% endhighlight %}
 
 ### <a id="geometrycollection" href="#geometrycollection">GeometryCollection</a>
@@ -484,16 +502,19 @@ Each element in the geometries array of a GeometryCollection is one of the
 geometry objects described above:
 
 {% highlight javascript %}
-  { "type": "GeometryCollection",
-    "geometries": [
-      { "type": "Point",
-        "coordinates": [100.0, 0.0]
-        },
-      { "type": "LineString",
-        "coordinates": [ [101.0, 0.0], [102.0, 1.0] ]
-        }
-    ]
-  }
+{
+  "type": "GeometryCollection",
+  "geometries": [
+    {
+      "type": "Point",
+      "coordinates": [100.0, 0.0]
+    },
+    {
+      "type": "LineString",
+      "coordinates": [ [101.0, 0.0], [102.0, 1.0] ]
+    }
+  ]
+}
 {% endhighlight %}
 
 ## <a id="appendix-b-contributors" href="#appendix-b-contributors">Appendix B. Contributors</a>
