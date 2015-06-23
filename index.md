@@ -9,11 +9,14 @@ GeoJSON is a format for encoding a variety of geographic data structures.
 
 {% highlight javascript %}
 {
-  "type": "Feature",
   "geometry": {
     "type": "Point",
-    "coordinates": [125.6, 10.1]
+    "coordinates": [
+      125.6,
+      10.1
+    ]
   },
+  "type": "Feature",
   "properties": {
     "name": "Dinagat Islands"
   }
