@@ -38,7 +38,7 @@ title:   GeoJSON Specification
 </nav>
 
 # The GeoJSON Format Specification
-  
+
 <!-- Document Info -->
 <table class="docinfo">
   <tr>
@@ -91,7 +91,7 @@ GeoJSON, an object consists of a collection of name/value pairs -- also called
 members. For each member, the name is always a string. Member values are either
 a string, number, object, array or one of the literals: `true`, `false`, and
 `null`. An array consists of elements where each element is a value as
-described above. 
+described above.
 
 
 ### <a id="examples" href="#examples">1.1. Examples</a>
@@ -162,7 +162,7 @@ features.
   type member values must be as shown here.
 
 * A GeoJSON object may have an optional `"crs"` member, the value of which must
-  be a coordinate reference system object (see 
+  be a coordinate reference system object (see
   [3. Coordinate Reference System Objects](#coordinate-reference-system-objects)).
 
 * A GeoJSON object may have a `"bbox"` member, the value of which must be a
@@ -331,14 +331,14 @@ are: `"proj4"`, `"ogcwkt"`, `"esriwkt"`, but others can be used:
 
 {% highlight javascript %}
   "crs": {
-    "type": "link", 
+    "type": "link",
     "properties": {
       "href": "http://example.com/crs/42",
       "type": "proj4"
       }
     }
 {% endhighlight %}
-    
+
 Relative links may be used to direct processors to CRS parameters in an
 auxiliary file:
 
@@ -385,7 +385,7 @@ Example of a bbox member on a feature collection:
     "bbox": [100.0, 0.0, 105.0, 1.0],
     "features": [
       ...
-      ] 
+      ]
     }
 {% endhighlight %}
 
@@ -436,7 +436,7 @@ With holes:
   { "type": "Polygon",
     "coordinates": [
       [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0] ],
-      [ [100.2, 0.2], [100.8, 0.2], [100.8, 0.8], [100.2, 0.8], [100.2, 0.2] ]
+      [ [100.2, 0.2], [100.2, 0.8], [100.8, 0.8], [100.8, 0.2], [100.2, 0.2] ]
       ]
    }
 {% endhighlight %}
