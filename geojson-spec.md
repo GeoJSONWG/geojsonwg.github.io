@@ -3,6 +3,7 @@ layout:  nav
 title:   Obsolete
 ---
 <!-- NAV -->
+{::options parse_block_html="true" /}
 <nav id="nav">
 ### Contents
 
